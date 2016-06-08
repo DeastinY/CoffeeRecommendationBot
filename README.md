@@ -2,7 +2,7 @@
 Recommends a coffee to Twitterusers in need !
 
 ## Setup
-Install the requirements with pip install -r requirements.txt
+Install the requirements with `pip install -r requirements.txt`
 
 ## Contribution Guidelines
 **YOU CAN CONTRIBUTE !**  
