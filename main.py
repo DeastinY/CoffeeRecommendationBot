@@ -1,4 +1,5 @@
 ﻿# Encoding: Utf-8
+import os
 import time
 import random
 import keys  # create a keys.py file with your twitter tokens if you want to run your own instance !
@@ -34,19 +35,35 @@ def make_tweet(username):
         if len(o) < 140:
             return o
 
+def load_ids():
+    with open("ids.txt","r") as f:
+        return f.read().split(";")
+    return None
+
+def save_ids(ids):
+    with open("ids.txt","w") as f:
+        f.write(";".join(ids))
+
 api = twitter.Api(consumer_key=keys.consumer_key, consumer_secret=keys.consumer_secret, access_token_key=keys.access_token_key, access_token_secret=keys.access_token_secret)
-# Get all tweets with "recommend" and "coffee" in them
-tweets = api.GetSearch(term="Coffee Recommend", count=200)
-for t in tweets:
-    # check the timeline of the posting users for replies
-    usertl = api.GetUserTimeline(user_id=t.user.id,since_id=t.id, count=200)
-    # check all tweets in the timeline for responses
-    replied = False
-    for tlt in usertl:
-        if tlt.in_reply_to_status_id==t.id and tlt.user.id == api.VerifyCredentials().id:
-            replied = True
-    if not replied:
-        # Post a recommendation !
+
+ids = load_ids() or []
+
+#tweets = api.GetSearch(term="Coffee", count=200)
+mentions = api.GetMentions(count=200)
+timeline = api.GetHomeTimeline(count=200)
+
+followers = api.GetFollowerIDs()
+# follow back
+for f in followers:
+    api.CreateFriendship(f,follow=True)
+
+
+for t in timeline + mentions:
+    if not t.id in ids and t.user.id in followers: # only hit up followers
         tweet = make_tweet(t.user.screen_name)
-        api.PostUpdate(tweet,in_reply_to_status_id=t.id)
+        ret = api.PostUpdate(tweet,in_reply_to_status_id=t.id)
+        ids.append(t.id_str)
+        print(ret)
+        break
+save_ids(ids)
 
