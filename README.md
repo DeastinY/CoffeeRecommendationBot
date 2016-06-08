@@ -1,6 +1,9 @@
 # CoffeeRecommendationBot
 Recommends a coffee to Twitterusers in need !
 
+## Setup
+Install the requirements with pip install -r requirements.txt
+
 ## Contribution Guidelines
 **YOU CAN CONTRIBUTE !**  
 No matter your level of expertise ! Experiment, play around and adjust.
