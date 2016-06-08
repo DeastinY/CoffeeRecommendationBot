@@ -1,5 +1,7 @@
 ﻿# Encoding: Utf-8
 import random
+import keys  # create a keys.py file with your twitter tokens if you want to run your own instance !
+import twitter
 from collections import OrderedDict
 
 intro = [("How about a","?"), ("Why not try the","?"), ("Try a","!"), ("Check out a","!"), ("Nothing like a",".")]
@@ -24,10 +26,12 @@ def order():
         order[random.choice(appendition)] = True
     return " ".join(" ".join(order.keys()).split())
 
-while True:
-    a, b = random.choice(intro)
-    o = a+" "+order()+" "+b
-    if len(o) < 255:
-        print(o)
-        break
+def make_tweet():
+    while True:
+        a, b = random.choice(intro)
+        o = a+" "+order()+" "+b
+        if len(o) < 140:
+            return o
 
+api = twitter.Api(consumer_key=keys.consumer_key, consumer_secret=keys.consumer_secret, access_token_key=keys.access_token_key, access_token_secret=keys.access_token_secret)
+status = api.PostUpdate(make_tweet())
