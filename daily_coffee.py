@@ -4,16 +4,19 @@ import random
 from collections import OrderedDict, deque
 import keys  # create a keys.py file with your twitter tokens if you want to run your own instance !
 import logging
+import json
 from TwitterAPI import TwitterAPI, TwitterRequestError
 
-intro = [("How about a","?"), ("Why not try the","?"), ("Try a","!"), ("Check out a","!"), ("Nothing like a",".")]
-multi = ["","Single", "Double", "Tripple", "Quad"]
-size = ["Short", "Tall", "Grande", "Venti® Hot", "Venti® Cold", "Trenta® Cold"]
-coffee = ["Espresso", "Espresso Macchiato", "Espresso con Panna", "Caffe Americano", "Cappuccino", "Caffe Latte", "Vanilla Latte", "Caramel Macchiato", "Chocolate Mocha", "White Caffe Mocha", "Frappuccino", "Ristretto", "Chai Tea Latte"]
-attribute = ["","Non-Fat", "Iced", "Sugar Free", "Venti", "Soy", "No Foam", "Tripple", "Half Sweet", "Decaf", "Half-Caff" , "Quad", "One-Pump", "Skinny", "Sugar-Free Syrup", "Light Ice", "No Whip", "Dolce Soy"]
-syrup_type = ["","With Extra Hot", " And Non-Fat", " On Half-Sweet", " Add One-Pump", "Add Ten-Pump", "And 4-Pump"]
-syrup = ["", "Caramel", "Hazelnut", "Cinnamon"]
-appendition = ["" ,"And Extra Shot", " Plus Extra Whip", "With An Extra Shot And Cream", "At 120 Degrees", "With Extra Whipped Cream and Chocolate Sauce"]
+coffeeFile  = open("coffeeType.json")
+coffeeTypes = json.load(coffeeFile)
+intro       = coffeeTypes['intro']
+multi       = coffeeTypes['multi']
+size        = coffeeTypes['size']
+coffee      = coffeeTypes['coffee']
+attribute   = coffeeTypes['attribute']
+syrup_type  = coffeeTypes['syrup_type']
+syrup       = coffeeTypes['syrup']
+appendition = coffeeTypes['appendition']
 
 def order():
     order = OrderedDict()
