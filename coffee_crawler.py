@@ -28,6 +28,6 @@ with open('coffeeType.json', 'r+') as f:
 			current_coffee_list.append(new_item)
 	json_data['coffee'] = current_coffee_list
 	f.seek(0)
-	f.write(json.dumps(json_data))
+	f.write(json.dumps(json_data, indent=4))
 	f.truncate()
 	
