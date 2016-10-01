@@ -15,7 +15,7 @@ Furthermore there are many ways to adjust:
 There is so much to do ! I'm looking forward to your contribution, no matter how experienced you are !
 
 
-**STEPS TO CONTRIBUTE - **
+<b>STEPS TO CONTRIBUTE - </b>
 
 - Fork the project
 - Make one or more well commented and clean commits to the repository. You can make a new branch here if you are modifying more than one part or feature.
