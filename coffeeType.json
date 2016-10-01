@@ -35,7 +35,8 @@
     "White Caffe Mocha",
     "Frappuccino",
     "Ristretto",
-    "Chai Tea Latte"
+    "Chai Tea Latte",
+    "Mocha"
   ],
   "attribute": [
     "",
@@ -55,7 +56,8 @@
     "Sugar-Free Syrup",
     "Light Ice",
     "No Whip",
-    "Dolce Soy"
+    "Dolce Soy",
+    "Almond"
   ],
   "syrup_type": [
     "",
@@ -70,7 +72,8 @@
     "",
     "Caramel",
     "Hazelnut",
-    "Cinnamon"
+    "Cinnamon",
+    "Vanilla"
   ],
   "appendition": [
     "",
