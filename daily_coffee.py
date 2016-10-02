@@ -22,17 +22,17 @@ appendition = coffeeTypes['appendition']
 
 
 def order():
-    order = OrderedDict()
-    order[random.choice(multi)] = True
+    order_dict = OrderedDict()
+    order_dict[random.choice(multi)] = True
     for i in range(random.randint(0, 5)):
-        order[random.choice(attribute)] = True
-    order[random.choice(size)] = True
-    order[random.choice(coffee)] = True
-    order[random.choice(syrup_type)] = True
-    order[random.choice(syrup)] = True
+        order_dict[random.choice(attribute)] = True
+    order_dict[random.choice(size)] = True
+    order_dict[random.choice(coffee)] = True
+    order_dict[random.choice(syrup_type)] = True
+    order_dict[random.choice(syrup)] = True
     for i in range(random.randint(0, 2)):
-        order[random.choice(appendition)] = True
-    return " ".join(" ".join(order.keys()).split())
+        order_dict[random.choice(appendition)] = True
+    return " ".join(" ".join(order_dict.keys()).split())
 
 
 def make_tweet():
