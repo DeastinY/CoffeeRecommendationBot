@@ -1,5 +1,6 @@
 # CoffeeRecommendationBot
 Recommends a coffee to Twitterusers in need !
+[![Build Status](https://travis-ci.org/DeastinY/CoffeeRecommendationBot.svg?branch=master)](https://travis-ci.org/DeastinY/CoffeeRecommendationBot)
 
 You can see a version of this bot running [here](https://twitter.com/aacoffeebot). I'm still struggling with the automatic responses, but the daily coffee tweet is working great !
 
