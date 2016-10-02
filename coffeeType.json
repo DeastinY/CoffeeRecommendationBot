@@ -83,5 +83,21 @@
     "With An Extra Shot And Cream",
     "At 120 Degrees",
     "With Extra Whipped Cream and Chocolate Sauce"
+  ],
+  "popular": [
+    "",
+    "Strawberry Smoothie",
+    "Caramel Frappuccino",
+    "Caramel Iced Coffee",
+    "Iced Caramel Macciato",
+    "Strawberry Lemonade",
+    "Peppermint Hot Chocolate",
+    "Pumpkin Spice Latte"
+  ],
+  "roasts": [
+    "Blonde",
+    "Dark",
+    "Medium"
   ]
+    
 }
