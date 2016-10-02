@@ -1,12 +1,11 @@
-import urllib2
+import requests
 from bs4 import BeautifulSoup
 import json
 
-url = 'http://www.starbucks.com/menu/catalog/product' \
-      '?drink=brewed-coffee#view_control=product'
-url = urllib2.urlopen(url)
+url = requests.get('http://www.starbucks.com/menu/catalog/product'
+                   + '?drink=brewed-coffee#view_control=product')
 
-content = url.read()
+content = url.content
 
 soup = BeautifulSoup(content, "html.parser")
 

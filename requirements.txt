@@ -1,1 +1,3 @@
 TwitterAPI
+beautifulsoup4
+requests
