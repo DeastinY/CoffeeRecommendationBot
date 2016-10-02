@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup
 import json
 
 url = requests.get('http://www.starbucks.com/menu/catalog/product'
-                   +'?drink=brewed-coffee#view_control=product')
+                   + '?drink=brewed-coffee#view_control=product')
 
 content = url.content
 
