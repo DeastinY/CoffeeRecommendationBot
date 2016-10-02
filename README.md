@@ -18,6 +18,49 @@ You can see a version of this bot running [here](https://twitter.com/aacoffeebot
 ## Setup
 Install the requirements with `pip install -r requirements.txt`
 
+## Testing
+
+### [Travis CI](https://travis-ci.org)
+
+Configuration for Travis CI can be found inside `.travis.yml`. The demo version of this bot runs on `Python 2.7`.
+
+If you want travis to use other python versions like `3.3` you can simply change the `python:` line inside `.travis.yml`
+
+**`.travis.yml` Python 3.3 Sample** 
+```yml
+language: python
+
+python:
+  - 3.3
+
+install:
+  - pip install -r requirements.txt
+  - pip install pep8 flake8
+  - pip list
+
+script:
+  - flake8 .
+```
+
+You can even test for multiple python environments (2.7 & 3.3 in the sample below):smile:
+
+**`.travis.yml` Python 2.7 & 3.3 Sample** 
+```yml
+language: python
+
+python:
+  - 2.7
+  - 3.3
+
+install:
+  - pip install -r requirements.txt
+  - pip install pep8 flake8
+  - pip list
+
+script:
+  - flake8 .
+```
+
 ## Contribution Guidelines
 Thanks for the interest !
 Contributiong guidelines are available in 'CONTRIBUTING.md'
