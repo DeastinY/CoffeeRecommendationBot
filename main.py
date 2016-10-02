@@ -24,28 +24,28 @@ appendition = coffeeTypes['appendition']
 
 
 def order():
-    ''' () -> str
-    Creates random order of coffee with random multi,
+    """ () -> str
+    Creates random order_dict of coffee with random multi,
     size, coffee, attribute, syrup_type, and syrup.
-    '''
-    order = OrderedDict()
-    order[random.choice(multi)] = True
+    """
+    order_dict = OrderedDict()
+    order_dict[random.choice(multi)] = True
     for i in range(random.randint(0, 5)):
-        order[random.choice(attribute)] = True
-    order[random.choice(size)] = True
-    order[random.choice(coffee)] = True
-    order[random.choice(syrup_type)] = True
-    order[random.choice(syrup)] = True
+        order_dict[random.choice(attribute)] = True
+    order_dict[random.choice(size)] = True
+    order_dict[random.choice(coffee)] = True
+    order_dict[random.choice(syrup_type)] = True
+    order_dict[random.choice(syrup)] = True
     for i in range(random.randint(0, 2)):
-        order[random.choice(appendition)] = True
-    return " ".join(" ".join(order.keys()).split())
+        order_dict[random.choice(appendition)] = True
+    return " ".join(" ".join(order_dict.keys()).split())
 
 
 def make_tweet(username):
-    ''' (str) -> str
+    """ (str) -> str
     Given the twitter username of a twitter user, returns a tweet
     recommending user with a new coffee order.
-    '''
+    """
     while True:
         a, b = random.choice(intro)
         o = u"@" + username + " " + a + " " + order() + " " + b

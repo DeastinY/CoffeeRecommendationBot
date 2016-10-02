@@ -24,7 +24,7 @@ with open('coffeeType.json', 'r+') as f:
     json_data = json.load(f)
     current_coffee_list = json_data['coffee']
     # print current_coffee_list
-    print len(current_coffee_list)
+    print(len(current_coffee_list))
     # new_coffee_list = []
 
     for new_item in name_arr:
