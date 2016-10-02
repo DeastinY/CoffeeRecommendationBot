@@ -48,9 +48,10 @@ def make_tweet(username):
     '''
     while True:
         a, b = random.choice(intro)
-        o = u"@"+username+" "+a+" "+order()+" "+b
+        o = u"@" + username + " " + a + " " + order() + " " + b
         if len(o) < 140:
             return o
+
 
 logging.info("Connecting to Twitter API")
 api = TwitterAPI(keys.consumer_key, keys.consumer_secret,
@@ -70,7 +71,7 @@ try:
             other = msg["user"]["screen_name"]
             to = msg["in_reply_to_screen_name"]
             toid = msg["in_reply_to_status_id"]
-            logging.debug(other+" : "+msg["text"])
+            logging.debug(other + " : " + msg["text"])
             if other == bot:
                 logging.info("My own tweet")
                 msgs.append(id)
