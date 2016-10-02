@@ -21,6 +21,10 @@ syrup       = coffeeTypes['syrup']
 appendition = coffeeTypes['appendition']
 
 def order():
+    ''' () -> str
+    Creates random order of coffee with random multi,
+    size, coffee, attribute, syrup_type, and syrup.
+    '''
     order = OrderedDict()
     order[random.choice(multi)] = True
     for i in range(random.randint(0,5)):
@@ -34,6 +38,10 @@ def order():
     return " ".join(" ".join(order.keys()).split())
 
 def make_tweet(username):
+    ''' (str) -> str
+    Given the twitter username of a twitter user, returns a tweet
+    recommending user with a new coffee order.
+    '''
     while True:
         a, b = random.choice(intro)
         o = u"@"+username+" "+a+" "+order()+" "+b
