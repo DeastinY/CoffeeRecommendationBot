@@ -9,46 +9,48 @@ import logging
 import json
 from TwitterAPI import TwitterAPI, TwitterRequestError
 
-logging.basicConfig(filename="/tmp/coffebot.log", level=logging.INFO)
+logging.basicConfig(filename="/tmp/coffeebot.log", level=logging.INFO)
 
-coffeeFile = open("coffeeType.json")
-coffeeTypes = json.load(coffeeFile)
-intro = coffeeTypes['intro']
-multi = coffeeTypes['multi']
-size = coffeeTypes['size']
-coffee = coffeeTypes['coffee']
-attribute = coffeeTypes['attribute']
-syrup_type = coffeeTypes['syrup_type']
-syrup = coffeeTypes['syrup']
-appendition = coffeeTypes['appendition']
+coffee_file = open("coffeeType.json")
+coffee_types = json.load(coffee_file)
+intro = coffee_types['intro']
+multi = coffee_types['multi']
+size = coffee_types['size']
+coffee = coffee_types['coffee']
+attribute = coffee_types['attribute']
+syrup_type = coffee_types['syrup_type']
+syrup = coffee_types['syrup']
+appendition = coffee_types['appendition']
 
 
 def order():
-    ''' () -> str
-    Creates random order of coffee with random multi,
+    """ () -> str
+
+    Creates random order_dict of coffee with random multi,
     size, coffee, attribute, syrup_type, and syrup.
-    '''
-    order = OrderedDict()
-    order[random.choice(multi)] = True
+    """
+    order_dict = OrderedDict()
+    order_dict[random.choice(multi)] = True
     for i in range(random.randint(0, 5)):
-        order[random.choice(attribute)] = True
-    order[random.choice(size)] = True
-    order[random.choice(coffee)] = True
-    order[random.choice(syrup_type)] = True
-    order[random.choice(syrup)] = True
+        order_dict[random.choice(attribute)] = True
+    order_dict[random.choice(size)] = True
+    order_dict[random.choice(coffee)] = True
+    order_dict[random.choice(syrup_type)] = True
+    order_dict[random.choice(syrup)] = True
     for i in range(random.randint(0, 2)):
-        order[random.choice(appendition)] = True
-    return " ".join(" ".join(order.keys()).split())
+        order_dict[random.choice(appendition)] = True
+    return " ".join(" ".join(order_dict.keys()).split())
 
 
 def make_tweet(username):
-    ''' (str) -> str
+    """ (str) -> str
+
     Given the twitter username of a twitter user, returns a tweet
     recommending user with a new coffee order.
-    '''
+    """
     while True:
         a, b = random.choice(intro)
-        o = u"@" + username + " " + a + " " + order() + " " + b
+        o = u"@{} {} {} {}".format(username, a, order(), b)
         if len(o) < 140:
             return o
 
