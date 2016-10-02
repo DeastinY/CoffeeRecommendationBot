@@ -1,7 +1,7 @@
 #!/usr/bin/env python3.4
 # Encoding: Utf-8
 import random
-from collections import OrderedDict, deque
+from collections import OrderedDict
 # create a keys.py file with your twitter tokens
 # if you want to run your own instance !
 import keys
