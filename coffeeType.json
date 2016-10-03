@@ -6,14 +6,16 @@
     "Why not try the",
     "Try a",
     "Check out a",
-    "Nothing like a"
+    "Nothing like a",
+    "My personal favorite"
   ],
   "multi": [
     "",
     "Single",
     "Double",
     "Tripple",
-    "Quad"
+    "Quad",
+    "Quint"
   ],
   "size": [
     "Short",
@@ -54,9 +56,12 @@
     "Quad",
     "One-Pump",
     "Skinny",
+    "Fat",
     "Sugar-Free Syrup",
     "Light Ice",
+    "Heavy Ice",
     "No Whip",
+    "Extra Whip",
     "Dolce Soy",
     "Almond"
   ],
@@ -67,14 +72,17 @@
     "On Half-Sweet",
     "Add One-Pump",
     "Add Ten-Pump",
-    "And 4-Pump"
+    "And 4-Pump",
+    "Add half a pump"
   ],
   "syrup": [
     "",
     "Caramel",
     "Hazelnut",
     "Cinnamon",
-    "Vanilla"
+    "Vanilla",
+    "Chocolate",
+    "Pumpkin Spice"
   ],
   "appendition": [
     "",
@@ -82,6 +90,7 @@
     "Plus Extra Whip",
     "With An Extra Shot And Cream",
     "At 120 Degrees",
-    "With Extra Whipped Cream and Chocolate Sauce"
+    "With Extra Whipped Cream and Chocolate Sauce",
+    "Caffeine Free"
   ]
 }
