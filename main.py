@@ -1,7 +1,7 @@
 #!/usr/bin/env python3.4
 # Encoding: Utf-8
 import random
-from collections import OrderedDict, deque
+from collections import deque
 # create a keys.py file with your twitter tokens if you want to run your own
 # instance !
 import keys
@@ -21,20 +21,20 @@ def order():
     Creates random order of coffee with random multi,
     size, coffee, attribute, syrup_type, and syrup.
     """
-    order = [random.choice(coffee_types["multi"])]
+    current_order = [random.choice(coffee_types["multi"])]
 
     for _ in xrange(random.randint(0, 5)):
-        order.append(random.choice(coffee_types["attribute"]))
+        current_order.append(random.choice(coffee_types["attribute"]))
 
-    order.extend([random.choice(coffee_types["size"]),
-                  random.choice(coffee_types["coffee"]),
-                  random.choice(coffee_types["syrup_type"]),
-                  random.choice(coffee_types["syrup"])])
+    current_order.extend([random.choice(coffee_types["size"]),
+                          random.choice(coffee_types["coffee"]),
+                          random.choice(coffee_types["syrup_type"]),
+                          random.choice(coffee_types["syrup"])])
 
     for _ in xrange(random.randint(0, 2)):
-        order.append(random.choice(coffee_types["appendition"]))
+        current_order.append(random.choice(coffee_types["appendition"]))
 
-    return " ".join(order)
+    return " ".join(current_order)
 
 
 def make_tweet(username):
