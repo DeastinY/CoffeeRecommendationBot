@@ -9,10 +9,10 @@ content = url.content
 
 soup = BeautifulSoup(content, "html.parser")
 
-table = soup.find("ol", {
-    "class": "blocks blocks-four-up thumbs"
+table = soup.find('ol', {
+    'class': 'blocks blocks-four-up thumbs'
 })
-spans = table.find_all("span")
+spans = table.find_all('span')
 name_arr = []
 for span in spans:
     name_arr.append(span.string)
