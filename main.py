@@ -9,9 +9,9 @@ import logging
 import json
 from TwitterAPI import TwitterAPI, TwitterRequestError
 
-logging.basicConfig(filename="/tmp/coffeebot.log", level=logging.INFO)
+logging.basicConfig(filename='/tmp/coffeebot.log', level=logging.INFO)
 
-coffee_file = open("coffeeType.json")
+coffee_file = open('coffeeType.json')
 coffee_types = json.load(coffee_file)
 intro = coffee_types['intro']
 multi = coffee_types['multi']
@@ -39,7 +39,7 @@ def order():
     order_dict[random.choice(syrup)] = True
     for i in range(random.randint(0, 2)):
         order_dict[random.choice(appendition)] = True
-    return " ".join(" ".join(order_dict.keys()).split())
+    return ' '.join(' '.join(order_dict.keys()).split())
 
 
 def make_tweet(username):
@@ -50,44 +50,44 @@ def make_tweet(username):
     """
     while True:
         a, b = random.choice(intro)
-        o = u"@{} {} {} {}".format(username, a, order(), b)
+        o = u'@{} {} {} {}'.format(username, a, order(), b)
         if len(o) < 140:
             return o
 
 
-logging.info("Connecting to Twitter API")
+logging.info('Connecting to Twitter API')
 api = TwitterAPI(keys.consumer_key, keys.consumer_secret,
                  keys.access_token_key, keys.access_token_secret)
-bot = api.request('account/verify_credentials').json()["screen_name"]
+bot = api.request('account/verify_credentials').json()['screen_name']
 # we keep the last 1000 messages and do not reply to those again
 msgs = deque(maxlen=1000)
-logging.info("Connected")
+logging.info('Connected')
 
 try:
     for msg in api.request('user', {'replies': 'all'}):
-        logging.info("New event")
+        logging.info('New event')
         logging.debug(msg)
-        if "text" in msg:
-            logging.info("Event is Tweet")
-            id = msg["id"]
-            other = msg["user"]["screen_name"]
-            to = msg["in_reply_to_screen_name"]
-            toid = msg["in_reply_to_status_id"]
-            logging.debug(other + " : " + msg["text"])
+        if 'text' in msg:
+            logging.info('Event is Tweet')
+            id = msg['id']
+            other = msg['user']['screen_name']
+            to = msg['in_reply_to_screen_name']
+            toid = msg['in_reply_to_status_id']
+            logging.debug(other + ' : ' + msg['text'])
             if other == bot:
-                logging.info("My own tweet")
+                logging.info('My own tweet')
                 msgs.append(id)
             if to == bot and not other == bot and toid not in msgs:
-                logging.info("Replying to tweet directed to me !")
+                logging.info('Replying to tweet directed to me !')
                 api.request('friendships/create', {'screen_name': other})
                 t = make_tweet(other)
                 r = api.request('statuses/update',
                                 {'in_reply_to_status_id': id, 'status': t})
-                logging.info("replied to {} with status {}"
+                logging.info('replied to {} with status {}'
                              .format(other, r.status_code))
                 msgs.append(id)
-            elif bot in msg["text"] and not other == bot:
-                logging.info("Was mentioned ! Like or Retweet maybe ?")
+            elif bot in msg['text'] and not other == bot:
+                logging.info('Was mentioned ! Like or Retweet maybe ?')
                 # friend them all !
                 api.request('friendships/create', {'screen_name': other})
                 if random.choice([True, False]):
