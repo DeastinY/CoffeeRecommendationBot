@@ -64,7 +64,6 @@ def daily_coffee():
     logging.info('Done !')
 
 
-
 logging.info("Connecting to Twitter API")
 api = TwitterAPI(keys.consumer_key, keys.consumer_secret,
                  keys.access_token_key, keys.access_token_secret)
