@@ -36,23 +36,25 @@ def order():
 
     return " ".join(current_order)
 
+
 def make_tweet(username=False):
     """ (str) -> str
 
     Given the twitter username of a twitter user, returns a tweet
     recommending user with a new coffee order.
     """
-    if username :
+    if username:
         while True:
             a, b = random.choice(coffee_types["intro"])
             o = u"@{} {} {} {}".format(username, a, order(), b)
             if len(o) < 140:
                 return o
-    else :
+    else:
         while True:
             o = u'Coffee of the day :\n' + order()
             if len(o) < 140:
                 return o
+
 
 def daily_coffee():
     logging.info('Sending COTD')
@@ -71,7 +73,7 @@ bot = api.request("account/verify_credentials").json()["screen_name"]
 msgs = deque(maxlen=1000)
 logging.info("Connected")
 
-try :
+try:
     daily_coffee()
 except TwitterRequestError as e:
     logging.exception(e)
