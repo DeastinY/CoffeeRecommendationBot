@@ -27,6 +27,10 @@ def order():
     size, coffee, attribute, syrup_type, and syrup.
     """
     current_order = [random.choice(coffee_types["multi"])]
+    try:
+        xrange
+    except NameError:
+        xrange = range
 
     for _ in xrange(random.randint(0, 5)):
         current_order.append(random.choice(coffee_types["attribute"]))
@@ -42,17 +46,31 @@ def order():
     return " ".join(current_order)
 
 
-def make_tweet(username):
+def make_tweet(username=False):
     """ (str) -> str
 
     Given the twitter username of a twitter user, returns a tweet
     recommending user with a new coffee order.
     """
-    while True:
-        a, b = random.choice(coffee_types["intro"])
-        o = u"@{} {} {} {}".format(username, a, order(), b)
-        if len(o) < 140:
-            return o
+    if username:
+        while True:
+            a, b = random.choice(coffee_types["intro"])
+            o = u"@{} {} {} {}".format(username, a, order(), b)
+            if len(o) < 140:
+                return o
+    else:
+        while True:
+            o = u'Coffee of the day :\n' + order()
+            if len(o) < 140:
+                return o
+
+
+def daily_coffee():
+    logging.info('Sending COTD')
+    t = make_tweet()
+    r = api.request('statuses/update', {'status': t})
+    logging.info('COTD with status : {}'.format(r.status_code))
+    logging.info('Done !')
 
 
 logging.info("Connecting to Twitter API")
@@ -62,6 +80,11 @@ bot = api.request("account/verify_credentials").json()["screen_name"]
 # we keep the last 1000 messages and do not reply to those again
 msgs = deque(maxlen=1000)
 logging.info("Connected")
+
+try:
+    daily_coffee()
+except TwitterRequestError as e:
+    logging.exception(e)
 
 try:
     for msg in api.request("user", {"replies": "all"}):
