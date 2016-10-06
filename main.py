@@ -9,7 +9,8 @@ import logging
 import json
 from TwitterAPI import TwitterAPI, TwitterRequestError
 
-try: xrange
+try:
+    xrange
 except NameError:
     xrange = range
 
