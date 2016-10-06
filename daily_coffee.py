@@ -9,7 +9,7 @@ import logging
 import json
 from TwitterAPI import TwitterAPI, TwitterRequestError
 
-coffee_file = open("coffeeType.json")
+coffee_file = open('coffeeType.json')
 coffee_types = json.load(coffee_file)
 intro = coffee_types['intro']
 multi = coffee_types['multi']
@@ -22,6 +22,11 @@ appendition = coffee_types['appendition']
 
 
 def order():
+    """ () -> str
+
+    Creates random order_dict of coffee with random multi,
+    size, coffee, attribute, syrup_type, and syrup.
+    """
     order_dict = OrderedDict()
     order_dict[random.choice(multi)] = True
     for i in range(random.randint(0, 5)):
@@ -32,31 +37,36 @@ def order():
     order_dict[random.choice(syrup)] = True
     for i in range(random.randint(0, 2)):
         order_dict[random.choice(appendition)] = True
-    return " ".join(" ".join(order_dict.keys()).split())
+    return ' '.join(' '.join(order_dict.keys()).split())
 
 
 def make_tweet():
+    """ (str) -> str
+
+    Given the twitter username of a twitter user, returns a tweet
+    recommending user with a new coffee order.
+    """
     while True:
-        o = u"Coffee of the day :\n" + order()
+        o = u'Coffee of the day :\n' + order()
         if len(o) < 140:
             return o
 
 
-logging.info("Connecting to Twitter API")
+logging.info('Connecting to Twitter API')
 api = TwitterAPI(
     keys.consumer_key,
     keys.consumer_secret,
     keys.access_token_key,
     keys.access_token_secret
 )
-bot = api.request('account/verify_credentials').json()["screen_name"]
-logging.info("Connected")
+bot = api.request('account/verify_credentials').json()['screen_name']
+logging.info('Connected')
 
 try:
-    logging.info("Sending COTD")
+    logging.info('Sending COTD')
     t = make_tweet()
     r = api.request('statuses/update', {'status': t})
-    logging.info("COTD with status : {}".format(r.status_code))
-    logging.info("Done !")
+    logging.info('COTD with status : {}'.format(r.status_code))
+    logging.info('Done !')
 except TwitterRequestError as e:
     logging.exception(e)

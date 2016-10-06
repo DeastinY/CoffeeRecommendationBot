@@ -2,17 +2,17 @@ import requests
 from bs4 import BeautifulSoup
 import json
 
-url = requests.get('http://www.starbucks.com/menu/catalog/product'
-                   + '?drink=brewed-coffee#view_control=product')
+url = requests.get('http://www.starbucks.com/menu/catalog/product' +
+                   '?drink=brewed-coffee#view_control=product')
 
 content = url.content
 
 soup = BeautifulSoup(content, "html.parser")
 
-table = soup.find("ol", {
-    "class": "blocks blocks-four-up thumbs"
+table = soup.find('ol', {
+    'class': 'blocks blocks-four-up thumbs'
 })
-spans = table.find_all("span")
+spans = table.find_all('span')
 name_arr = []
 for span in spans:
     name_arr.append(span.string)
