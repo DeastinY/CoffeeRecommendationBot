@@ -9,8 +9,9 @@ import logging
 import json
 from TwitterAPI import TwitterAPI, TwitterRequestError
 
-try: xrange 
-except NameError: xrange = range
+try: xrange
+except NameError:
+    xrange = range
 
 logging.basicConfig(filename="/tmp/coffeebot.log", level=logging.INFO)
 
