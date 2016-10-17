@@ -1,5 +1,6 @@
 # CoffeeRecommendationBot
-Recommends a coffee to Twitterusers in need !
+Recommends a coffee to Twitterusers in need !  
+[![Build Status](https://travis-ci.org/DeastinY/CoffeeRecommendationBot.svg?branch=master)](https://travis-ci.org/DeastinY/CoffeeRecommendationBot)
 
 You can see a version of this bot running [here](https://twitter.com/aacoffeebot). I'm still struggling with the automatic responses, but the daily coffee tweet is working great !
 
@@ -9,13 +10,57 @@ You can see a version of this bot running [here](https://twitter.com/aacoffeebot
 - Responds to direct mentions
 - Likes / Retweets indirect mentions
 - Can tweet a "Coffee of the Day" style tweet
-- Updates it's beverages from Starbucks ! (Thanks to [@emorres25](https://github.com/emorres25) !)
+- Updates it's beverages from Starbucks (Thanks to [@emorres25](https://github.com/emorres25) !)
 - Manages drinks in easy-to-edit JSON format (Thanks to [@tsonnen](https://github.com/tsonnen) !)
+- Constant quality checks with Travis-CI (Thanks to [@Twista](https://github.com/Twista) !)
 - Well maintained code, written with lot's of love (Thanks to everyone !)
 
 ## Setup
 Install the requirements with `pip install -r requirements.txt`
 
+## Testing
+
+### [Travis CI](https://travis-ci.org)
+
+Configuration for Travis CI can be found inside `.travis.yml`. The demo version of this bot runs on `Python 2.7`.
+
+If you want travis to use other Python versions like `3.3` you can simply change the `python:` line inside `.travis.yml`
+
+**`.travis.yml` Python 3.3 Sample** 
+```yml
+language: python
+
+python:
+  - 3.3
+
+install:
+  - pip install -r requirements.txt
+  - pip install pep8 flake8
+  - pip list
+
+script:
+  - flake8 .
+```
+
+You can even test for multiple Python environments (2.7 & 3.3 in the sample below):smile:
+
+**`.travis.yml` Python 2.7 & 3.3 Sample** 
+```yml
+language: python
+
+python:
+  - 2.7
+  - 3.3
+
+install:
+  - pip install -r requirements.txt
+  - pip install pep8 flake8
+  - pip list
+
+script:
+  - flake8 .
+```
+
 ## Contribution Guidelines
 Thanks for the interest !
-Contributiong guidelines are available in 'CONTRIBUTING.md'
+Contributing guidelines are available in 'CONTRIBUTING.md'
