@@ -27,6 +27,9 @@ def order():
     size, coffee, attribute, syrup_type, and syrup.
     """
     current_order = [random.choice(coffee_types['multi'])]
+    
+    # backwards compatibility with Python 2.7
+    
     try:
         xrange
     except NameError:
@@ -35,6 +38,8 @@ def order():
     for _ in xrange(random.randint(0, 5)):
         current_order.append(random.choice(coffee_types['attribute']))
 
+    # Append to current order different coffee_types    
+    
     current_order.extend([random.choice(coffee_types['size']),
                           random.choice(coffee_types['coffee']),
                           random.choice(coffee_types['syrup_type']),
@@ -47,7 +52,7 @@ def order():
 
 
 def make_tweet(username=False):
-    """ (str) -> str
+    """ () -> str
 
     Given the twitter username of a twitter user, returns a tweet
     recommending user with a new coffee order.
@@ -57,15 +62,20 @@ def make_tweet(username=False):
             a, b = random.choice(coffee_types['intro'])
             o = u'@{} {} {} {}'.format(username, a, order(), b)
             if len(o) < 140:
-                return o
+                tweet = o
     else:
         while True:
             o = u'Coffee of the day :\n' + order()
             if len(o) < 140:
-                return o
+                tweet = o
+    return tweet
 
 
 def daily_coffee():
+    """
+    Make API request to Twitter
+    
+    """
     logging.info('Sending COTD')
     t = make_tweet()
     r = api.request('statuses/update', {'status': t})
@@ -77,7 +87,9 @@ logging.info('Connecting to Twitter API')
 api = TwitterAPI(keys.consumer_key, keys.consumer_secret,
                  keys.access_token_key, keys.access_token_secret)
 bot = api.request('account/verify_credentials').json()['screen_name']
+
 # we keep the last 1000 messages and do not reply to those again
+
 msgs = deque(maxlen=1000)
 logging.info('Connected')
 
