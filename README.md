@@ -63,4 +63,7 @@ script:
 
 ## Contribution Guidelines
 Thanks for the interest !
-Contributing guidelines are available in 'CONTRIBUTING.md'
+Contributing guidelines are available in '[CONTRIBUTING.md](CONTRIBUTING.md)'
+
+## License
+This project is licensed under the terms of the MIT license. The full license text is available in the [LICENSE](LICENSE) file.
