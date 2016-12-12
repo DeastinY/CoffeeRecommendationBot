@@ -40,8 +40,7 @@
         "Dolce Soy",
         "Almond"
     ],
-    "coffee": [
-        {
+    "coffee": {
             "Coffee Traveler": "http://globalassets.starbucks.com/assets/139e5a0565134f4ab1935a04357dd01c.jpg",
             "Espresso": "http://www.espressolife.com/wp-content/uploads/2015/08/how_to_make_espresso.jpg",
             "Ristretto": "http://www.minimoka.es/wp-content/uploads/2012/07/Ristretto.jpg",
@@ -68,7 +67,7 @@
             "Decaf Pike Place\u00ae Roast": "http://globalassets.starbucks.com/assets/376e8381434049798635d370bee0d7f0.jpg",
             "Caffe Latte": "http://www.minimoka.es/wp-content/uploads/2012/07/caffe_latte.jpg",
             "Vanilla Sweet Cream Cold Brew": "http://globalassets.starbucks.com/assets/b46638c85364413e88d21275b2bf29c2.jpg"
-        }],
+        },
     "intro": [
         "",
         "How about a",

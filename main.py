@@ -36,13 +36,13 @@ def order():
         current_order.append(random.choice(coffee_types['attribute']))
 
     current_order.extend([random.choice(coffee_types['size']),
-                          random.choice(coffee_types['coffee']),
+                          random.choice(list(coffee_types['coffee'].keys())),
                           random.choice(coffee_types['syrup_type']),
                           random.choice(coffee_types['syrup'])])
 
     for _ in xrange(random.randint(0, 2)):
         current_order.append(random.choice(coffee_types['appendition']))
-
+    print(current_order)
     return ' '.join(current_order)
 
 
@@ -54,8 +54,8 @@ def make_tweet(username=False):
     """
     if username:
         while True:
-            a, b = random.choice(coffee_types['intro'])
-            o = u'@{} {} {} {}'.format(username, a, order(), b)
+            a = random.choice(coffee_types['intro'])
+            o = u'@{} {} {} '.format(username, a, order())
             if len(o) < 140:
                 return o
     else:
