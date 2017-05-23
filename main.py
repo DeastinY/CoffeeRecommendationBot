@@ -27,10 +27,6 @@ def order():
     size, coffee, attribute, syrup_type, and syrup.
     """
     current_order = [random.choice(coffee_types['multi'])]
-    try:
-        xrange
-    except NameError:
-        xrange = range
 
     for _ in xrange(random.randint(0, 5)):
         current_order.append(random.choice(coffee_types['attribute']))
