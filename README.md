@@ -19,10 +19,10 @@ You can see a version of this bot running [here](https://twitter.com/aacoffeebot
 Install the requirements with `pip install -r requirements.txt`
 
 Create a `keys.py` file with the required tokens:
-  >consumer_key=""
-  consumer_secret=""
-  access_token_key=""
-  access_token_secret=""
+  >consumer_key=""  
+  consumer_secret=""  
+  access_token_key=""  
+  access_token_secret=""  
 
 
 ## Testing
